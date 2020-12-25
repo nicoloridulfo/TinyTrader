@@ -1,6 +1,9 @@
 import yfinance as yf
+import os
 
 def main():
+    if not os.path.exists('data'):
+        os.makedirs('data')
     with open("TinyTrader/symbols.txt", "r") as f:
         symbols = f.read().split("\n")
         df = yf.download(symbols, group_by="ticker")
